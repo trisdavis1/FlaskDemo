@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  flaskdemo:
+    image: baoqiangy/flaskdemo
+    container_name: flaskdemo
+    ports:
+      - "5000:5000"
+
+  db:
+    image: mysql
+    container_name: mysql 
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin 
+    links:
+      - db
+    ports:
+      - 8081:80
+
+volumes:
+  dbdata:
+    driver: local
