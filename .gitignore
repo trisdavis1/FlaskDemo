@@ -2,3 +2,6 @@ venv/
 app/__pycache__/
 __pycache__/
 app.db
+tests/__pycache__
+tests/functional/__pycache__
+tests/unit/__pycache__

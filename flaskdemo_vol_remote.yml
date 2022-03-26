@@ -12,6 +12,7 @@ services:
     container_name: mysql 
     environment:
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: flaskdemo
     ports:
       - "3306:3306"
     volumes:
