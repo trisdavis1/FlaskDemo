@@ -58,7 +58,6 @@ pipeline {
     	post {
         	always {
 			echo 'The pipeline completed'
-			junit allowEmptyResults: true, testResults:'**/test_reports/*.xml'
         	}
         	success {
 			echo "FlaskDemo Application Docker Image Built and Pushed to DockerHub Up!!"
