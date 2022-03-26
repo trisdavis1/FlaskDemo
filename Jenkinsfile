@@ -16,11 +16,6 @@ pipeline {
         	}
 
         	stage('Test') {
-			when {
-				expression {
-					env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'main'
-				}
-			}
             		steps {
 				sh 'python -m pytest'
 				input(id: "Image Build", message: "Deploy ${params.project_name}?", ok: 'Build Docker Image')
