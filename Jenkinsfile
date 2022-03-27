@@ -19,7 +19,6 @@ pipeline {
             		steps {
 				sh 'pip install -r requirements.txt'
 				sh 'python -m pytest'
-				input(id: "Image Build", message: "Deploy ${params.project_name}?", ok: 'Build Docker Image')
             		}
         	}
 
