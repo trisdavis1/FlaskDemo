@@ -32,7 +32,7 @@ pytest==7.0.1
 python-dotenv==0.19.2
 requests==2.27.1
 SQLAlchemy==1.4.32
-tomli==2.0.1
+tomli==1.2.3
 urllib3==1.26.8
 Werkzeug==2.0.3
 WTForms==3.0.1
