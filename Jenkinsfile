@@ -29,7 +29,7 @@ pipeline {
                 {
                         steps {
 				sh 'sudo chmod 666 /var/run/docker.sock'
-                                sh 'docker build -t baoqiangy/flaskdemo:latest .'
+                                sh 'docker build -t baoqiangy/flaskdemo:$VERSION .'
                         }
                 }
 
@@ -43,7 +43,7 @@ pipeline {
 		stage('Push Image to Dockerhub') {
 
 			steps {
-				sh 'docker push baoqiangy/flaskdemo:latest'
+				sh 'docker push baoqiangy/flaskdemo:$VERSION'
 			}
 		}
 
@@ -59,7 +59,7 @@ pipeline {
 			echo 'The pipeline completed'
         	}
         	success {
-			echo "FlaskDemo Application Docker Image Built and Pushed to DockerHub Up!!"
+			echo "FlaskDemo Application Docker Image v.${VERSION} Built and Pushed to DockerHub Up!!"
 			sh 'docker logout'
         	}
         	failure {
