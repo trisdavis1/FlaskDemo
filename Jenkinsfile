@@ -6,13 +6,9 @@ pipeline {
 	}
 	stages {
 		stage('Build') {
-			parallel {
-				stage('Build') {
-					steps {
-						sh 'echo "building the FlaskDemo v.${VERSION} from Git repo"'
-					}
-                		}
-            		}
+			steps {
+				sh 'echo "building the FlaskDemo v.${VERSION} from Git repo"'
+			}
         	}
 
         	stage('Test') {
@@ -32,18 +28,19 @@ pipeline {
 		stage('Build Docker Image')
                 {
                         steps {
+				sh 'sudo chmod 666 /var/run/docker.sock'
                                 sh 'docker build -t baoqiangy/flaskdemo:latest .'
                         }
                 }
 
-		stage('Login') {
+		stage('Dockerhub Login') {
 
 			steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
 
-		stage('Push') {
+		stage('Push Image to Dockerhub') {
 
 			steps {
 				sh 'docker push baoqiangy/flaskdemo:latest'
