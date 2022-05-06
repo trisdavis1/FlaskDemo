@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	environment {
-		VERSION = '1.0.10'
+		VERSION = '1.0.0'
 		DOCKERHUB_CREDENTIALS = credentials('docker-tdavis1-credentials')
 	}
 	stages {
